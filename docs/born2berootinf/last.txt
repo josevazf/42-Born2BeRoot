@@ -15,7 +15,7 @@ After the SDAs are configured,
 		@-) Defaults		log_input,log_output							// It is used to keep logs of inputs and outputs.
 		@-) Defaults		iolog_dir="/var/log/sudo"						// Archive log_input and log_output events to the specified directory.
 		@-) Defaults		requiretty										// Enforces TTY mode.
-		@-) Defaults		secure_path="pdf'ye bak"						// To limit the directories used by Sudo.
+		@-) Defaults		secure_path="look at the pdf"					// To limit the directories used by Sudo.
 	8-) We restart the system with the "reboot" command.
 	-------------------------------------------------------------------------------------------------------------------------------------------------------------
 	9-) "sudo apt install openssh-server"		--> Installs the Openssh-server package (Openssh provides a secure channel over an unsecured network from the outside)
