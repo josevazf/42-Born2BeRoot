@@ -1,0 +1,54 @@
+sudo apt install lighttpd		--> NGNIX and APACHE External is an alternative http server.
+sudo ufw allow 80				--> Port 80 Standard port for HTTP
+sudo apt install mariadb-server	--> Mariadb is a relational database. It is derived from the source code of MySQL Databse Server.
+sudo mysql_secure_installation	--> To configure default and unsafe settings...
+	@-)In the first step, it will ask for a password, enter and skip.
+	@-)Switch to unix option = N
+	@-)Change the root password = N
+	@-)Remove anonymous users = Y
+	@-)Disallow root login remotely = Y
+	@-)Remove test database and access to it = Y
+	@-)Reload privilege tables now = Y
+sudo mariadb					--> Enter the Mariadb console.
+CREATE DATABASE database_name	--> A new database is created.
+GRANT ALL ON database_name.* TO 'database_user'@'localhost' IDENTIFIED BY 'database_user_password' WITH GRANT OPTION;	--> Here's what we've done...
+	-We have created a new database user and specified that it will be on the local network and set a password for this user NOTE: Do not confuse the user here with the users in the system!
+	-We tell this newly created user to give full authorisation to the database we just created.
+FLUSH PRIVILEGES;				--> We read the changes we made by saying
+exit							--> We're logging out of the Mariadb console.
+mariadb -u database_user -p	--> We will try to connect to the database from the user we created. After writing this, it will ask us for a password, the password is the database_user_password we have set.
+SHOW DATABASES;							--> It shows the databases. There should be 2 databases, one we created and the other information_schema
+exit							--> Exit!
+sudo apt install php-cgi php-mysql		--> COMMON GATEWAY INTERFACE - 
+	-php-cgi (common gateway interface) web server apache, lighttpd vs. with external applications PHP, PYTHON, PERL is a web technology that enables languages to communicate with their interpreters.
+	-Wordpress PHP and we install these plugins.
+sudo apt install wget					--> We install this plugin to receive downloads over HTTP HTTPS AND FTP. In the next process, we will pull data from Wordpress's own site.
+sudo wget http://wordpress.org/latest.tar.gz -P /var/www/html		--> We download the latest wordpress panel to the specified directory (if not, it creates itself).
+sudo tar -xzvf /var/www/html/latest.tar.gz							--> We extract the files from the tar.gz folder we downloaded.
+sudo rm /var/www/html/latest.tar.gz									--> After extracting the files, we delete the archive file we downloaded.
+sudo cp -r /var/www/html/wordpress/* /var/www/html					--> The name of the folder from the archive is wordpress, with this command we copy all the data in the wordpress file to the specified path.
+sudo rm -rf /var/www/html/wordpress									--> After copying the contents of the folder, we delete the folder as we are no longer interested in the folder.
+sudo cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php	--> wp-config-sample We copy the file with the name wp-config.
+sudo nano /var/www/html/wp-config.php										--> open the copied file with nano and edit the following parts...
+	-define( 'DB_NAME', 'database_name' );^M
+	-define( 'DB_USER', 'database_user' );^M
+	-define( 'DB_PASSWORD', 'database_user_password' );^M
+@@sudo lighty-enable-mod fastcgi---------
+@@sudo lighty-enable-mod fastcgi-php------> enable the astcgi module and php configuration as follows
+@sudo service lighttpd force-reload------> We restart the lighttpd server
+sudo apt install vsftpd		--> Package required for the FTP server.
+sudo ufw allow 21			--> We grant TCP UDP permission for port 21 from the firewall.
+sudo nano /etc/vsftpd.conf	-->
+	@-)#write_enable=YES	// # is removed to write ftp commands
+	@-)user_sub_token=$USER
+	@-)local_root=/home/$USER/ftp
+	@-)userlist_enable=YES
+	@-)userlist_file=/etc/vsftpd.userlist
+	@-)userlist_deny=NO
+sudo mkdir /home/kullanıcı_adı/ftp 	--> We opened an ftp folder in the directory where our user is located.
+sudo mkdir /home/kullanıcı_adı/ftp/files	-->We open the Files folder
+sudo chown nobody:nogroup /home/<username>/ftp	--> We set the ownership and group of the ftp folder to nobody.
+sudo chmod a-w /home/<username>/ftp		--> We've given write permission to all users.
+sudo nano /etc/vsftpd.userlist			--> We do CTRL + O and then CTRL + X and save and exit. Its purpose allows us to connect with allowed users.
+echo kullanıcı_adı | sudo tee -a /etc/vsftpd.userlist 	--> We add our user to the userlist with .
+
