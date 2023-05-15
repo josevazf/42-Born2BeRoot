@@ -17,7 +17,7 @@ GRANT ALL ON database_name.* TO 'database_user'@'localhost' IDENTIFIED BY 'datab
 FLUSH PRIVILEGES;				--> We read the changes we made by saying
 exit							--> We're logging out of the Mariadb console.
 mariadb -u database_user -p	--> We will try to connect to the database from the user we created. After writing this, it will ask us for a password, the password is the database_user_password we have set.
-SHOW DATABASES;							--> It shows the databases. There should be 2 databases, one we created and the other information_schema
+SHOW DATABASES;					--> It shows the databases. There should be 2 databases, one we created and the other information_schema
 exit							--> Exit!
 sudo apt install php-cgi php-mysql		--> COMMON GATEWAY INTERFACE - 
 	-php-cgi (common gateway interface) web server apache, lighttpd vs. with external applications PHP, PYTHON, PERL is a web technology that enables languages to communicate with their interpreters.
