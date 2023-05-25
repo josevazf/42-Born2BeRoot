@@ -470,35 +470,3 @@ Syntax and options to use
 | --shell | Used to get shell commands as output |
 | --execute | Executes the commands received as output from --shell option |
 | --code | Used to get code as output |
-
-### Go Ethereum Client
-
-https://docs.ethstaker.cc/ethstaker-knowledge-base/tutorials/solo-staking-guides
-
-https://www.coincashew.com/coins/overview-eth/guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation
-
-https://betterprogramming.pub/run-an-ethereum-node-on-linux-late-2019-b37a1d35800e
-
-[Install geth on Debian 11 bullseye using ubuntu ppa](https://gist.github.com/reisenmachtfreude/2f8be2f7a7584341539ae95909e95809)
-
-[Run the light client - The Nimbus Guide](https://nimbus.guide/el-light-client.html)
-
-[Prepare your machine - The Nimbus Guide](https://nimbus.guide/install.html)
-
-[Install geth on Debian 11 bullseye using ubuntu ppa](https://gist.github.com/reisenmachtfreude/2f8be2f7a7584341539ae95909e95809)
-
-[Installing Geth | go-ethereum](https://geth.ethereum.org/docs/getting-started/installing-geth)
-
-[](https://ethereum.github.io/execution-apis/api-documentation/)
-
-`sudo apt update`
-
-`sudo apt install golang`
-
-`sudo apt-get install -y chrony`
-
-`sudo apt install software-properties-common`
-
-`sudo vim /etc/apt/sources.list`
-
-`sudo apt-get update -y && sudo apt dist-upgrade -y`
