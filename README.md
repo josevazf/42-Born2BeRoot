@@ -98,9 +98,7 @@ Next we need to define some sudo rules:
 `Defaults		requiretty`
 *Enforces TTY mode.*
 
-`Defaults		secure_path="see bellow"`
-
-`/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin`
+`Defaults		secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"`
 *To limit the directories used by Sudo.*
 
 ## SSH & UFW
