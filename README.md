@@ -449,9 +449,10 @@ Go to wordpress page and install the theme
 
 ### ShellGPT
 
-https://beebom.com/how-use-chatgpt-linux-terminal/
+sk-Yv0r2RG0xgF2O8KdYeJHr3BlbkFJHdE9S0ZgOoG8vv6xDFTs
 
-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
+We need some aditional services to run ShellGPT on our terminal.
+First lets check if we already have Python installed:
 
 `python3 —version` - check python version
 
@@ -471,7 +472,7 @@ Install PIP package manager for python:
 
 `pip3 —version` - check pip version
 
-Install Venv module, to create an isolated virtual environment in Linux and prevent any conflict with other libraries. Installing any library or package will install many background dependencies that can interfere with other libraries. To create a virtual environment for a project, you need the “venv” module, which can be installed using the command below:
+Install *venv* module, to create an isolated virtual environment in Linux and prevent any conflict with other libraries. Installing any library or package will install many background dependencies that can interfere with other libraries. To create a virtual environment for a project, you need the *venv* module, which can be installed using the command below:
 
 `sudo apt install python3-venv`
 
@@ -479,13 +480,15 @@ Go to root:
 
 `mkdir cmdline-chatgpt` - create a directory
 
-Enter the created directory and create a virtual environment:
+Enter the new directory and create a virtual environment:
 
 `python3 -m venv chatgpt_cli`
 
 `source chatgpt_cli/bin/activate` - activate virtual environment
 
-Get OpenAI API key:
+Get an OpenAI API key, you will need a payed account for this to work. 
+Light calls on the API cost a fraction of a cent $0.001, so it's ok for casual use.
+See this [page](https://gptforwork.com/tools/openai-chatgpt-api-pricing-calculator) to get a sense of the values. Anyways you can set a monthly limit so you don't get out of control.
 
 `export OPEN_API_KEY=<key>` - create an environment variable for this API key
 
