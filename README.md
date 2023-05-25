@@ -1,4 +1,15 @@
 # 42 Common Core / Born2BeRoot
+1. [Debian](#debian)
+2. [Sudo, Groups & Hostname](#Sudo, Groups & Hostname)
+3. SSH & UFW
+4. Password Policy
+5. Monitoring Script
+6. Bonus
+ - 6.1. lighttpd & PHP
+ - 6.2. MariaDB
+ - 6.3. Wordpress
+ - 6.4. VSFTPD
+ - 6.5. ShellGPT
 
 This project consists in setting up a server in a virtual machine, using Virtual Box, under specific instructions.
 
