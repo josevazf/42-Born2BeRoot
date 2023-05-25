@@ -3,7 +3,7 @@
 This project consists in setting up a server in a virtual machine, using Virtual Box, under specific instructions.
 The operating system chosen was the latest stable version of Debian at the time (bullseye 11.7.0).
 
-Requirements for the mandatory part:
+### **Requirements for the mandatory part**
 - Partitioning using LVM and according to specified definitions (different with or without bonus part);
 - Install and configure sudo following strict rules:
   - authentication using sudo has to be limited to 3 attempts in the event of an incorrect password;
@@ -23,17 +23,18 @@ Requirements for the mandatory part:
   - password must have at leas 7 characters that are not part of the former password (does not apply to the root password);
 - Set up a cron job with a monitoring script that displays some system info on all terminals every 10 minutes;
 
-Requirements for the bonus part:
-- 
+### Requirements for the bonus part:
+- Set up a functional WordPress website using the following services: lighttpd, MAriaDB and PHP;
+- Set up an aditional service. In this case I installed FTP and ShellGPT (command line version of ChatGPT);
 
+## Installation
 
+There are several tutorials on GitHub and on other places showing how to install Debian on VirtualBox but none of them show how to correctly partition the disk so we can get a correct value when using the lsblk command as showed in the project subject.
 
 
 https://www.dataunitconverter.com/gigabyte-to-gibibyte
 
 `lsblk` - prints all block devices (except RAM disks) in a tree-like format by default
-
-
 
 ## Sudo, Groups & Hostname
 
@@ -428,7 +429,7 @@ In the server unzip the file:
 
 Go to wordpress page and install the theme
 
-### ChatGPT
+### ShellGPT
 
 https://beebom.com/how-use-chatgpt-linux-terminal/
 
