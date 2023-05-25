@@ -72,13 +72,13 @@ It is not possible to remove the primary group of an existing user without remov
 
 `cat /etc/passwd | awk -F '{print $1}'`  - same as above
 
-`sudo hostnamectl set-hostname <new_hostname>` - change hostname
+`hostnamectl status` - check hostname
 
-`hostnamectl status` - check hostname status
+`sudo hostnamectl set-hostname <new_hostname>` - change hostname
 
 Next we need to define some sudo rules:
 
-`sudo visudo -f /etc/sudoers.d/newsudorules` - Opening sudo files with "visudo" creates a safer structure, we created a new file called `newsudorules` in the specified directory and we will add the following codes:
+`sudo visudo -f /etc/sudoers.d/newsudorules` - Opening sudo files with "visudo" creates a safer structure, we created a new file called *newsudorules* in the specified directory and we add the following lines:
 
 `Defaults		passwd_tries=3` 
 *With Sudo, the maximum number of password attempts is 3 (3 is also standard)*
