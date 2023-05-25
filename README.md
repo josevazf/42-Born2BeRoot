@@ -1,19 +1,19 @@
 # 42 Common Core / Born2BeRoot
 
 This project consists in setting up a server in a virtual machine, using Virtual Box, under specific instructions.
-The operating system chosen was the latest stable version of Debian, at the time (bullseye 11.7.0).
+The operating system chosen was the latest stable version of ***Debian***, at the time (bullseye 11.7.0).
 
 ### Requirements for the mandatory part
-- Partitioning using LVM and according to specified definitions (different with or without bonus part);
-- Install and configure sudo following strict rules:
+- Partitioning using ***LVM*** and according to specified definitions (different with or without bonus part);
+- Install and configure ***sudo*** following strict rules:
   - authentication using sudo has to be limited to 3 attempts in the event of an incorrect password;
   - a custom message has to be displayed if an erros due to a wrong password occurs when using sudo;
   - each action using sudo has to be archived, both inputs and outputs. The log file has to be saved in the /var/log/sudo/ folder;
   - TTY mode has to be enabled for security reasons;
   - the paths that can be used by sudo must be restricted to: /usr/local/sbin:/user/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin 
-- Install and configure SSH only running on 4242;
-- Install and configure UFW firewall;
-- Implement a strong password policy for existing and new users using libpam-pwquality package:
+- Install and configure ***SSH*** only running on 4242;
+- Install and configure ***UFW*** firewall;
+- Implement a strong password policy for existing and new users using ***libpam-pwquality*** package:
   - password has to expire every 30 days;
   - minimum number of days allowed before the modification of a password will be set to 2;
   - the user has to receive a warning message 7 days before their password expires;
@@ -21,19 +21,21 @@ The operating system chosen was the latest stable version of Debian, at the time
   - password must not contain more than 3 consecutive identical characters;
   - password must not include the name of the user;
   - password must have at leas 7 characters that are not part of the former password (does not apply to the root password);
-- Set up a cron job with a monitoring script that displays some system info on all terminals every 10 minutes;
+- Set up a ***cron*** job with a monitoring script that displays some system info on all terminals every 10 minutes;
 
 ### Requirements for the bonus part:
-- Set up a functional WordPress website using the following services: lighttpd, MAriaDB and PHP;
-- Set up an aditional service. In this case I installed FTP and ShellGPT (command line version of ChatGPT);
+- Set up a functional ***WordPress*** website using the following services: ***lighttpd***, ***MariaDB*** and ***PHP***;
+- Set up an aditional service. In this case I installed ***FTP*** and ***ShellGPT*** (command line version of ChatGPT);
 
 ## Installation
+The initial steps to install ***Debian*** can be found in several tutorials across GitHub and Youtube so I won't detail it here. However I will specify how to correctly partition the disk so we can get the same values when using the `lsblk` command as showed in the project subject.
 
-There are several tutorials on GitHub and on other places showing the configuration of Debian on VirtualBox but none of them show how to correctly partition the disk so we can get the same values when using the lsblk command as showed in the project subject.
-The source unit Gibibyte is Binary where as the target unit Gigabyte is Decimal
-
-https://www.dataunitconverter.com/gigabyte-to-gibibyte
 <img width="769" alt="image" src="https://github.com/josevazf/42-Born2BeRoot/assets/19204122/f0786d7e-f06b-4444-ad2c-2dc3236b68d7">
+
+When we are defining the size for the partitions we are working with Gigabyte wich is Decimal units, however what we see when using the `lsblk` command is Gibibyte, which is Binary.
+We need to convert the Gibibyte values to aproximate Gigabyte values. To do that we can use this online [Converter]([https://pages.github.com/](https://www.dataunitconverter.com/gigabyte-to-gibibyte)).
+
+<img src="https://github.com/josevazf/42-Born2BeRoot/assets/19204122/a387287b-5e60-4538-a73b-ff19fe90aabe">
 
 `lsblk` - prints all block devices (except RAM disks) in a tree-like format by default
 
