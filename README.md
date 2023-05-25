@@ -29,10 +29,11 @@ The operating system chosen was the latest stable version of Debian, at the time
 
 ## Installation
 
-There are several tutorials on GitHub and on other places showing how to install Debian on VirtualBox but none of them show how to correctly partition the disk so we can get a correct value when using the lsblk command as showed in the project subject.
-
+There are several tutorials on GitHub and on other places showing the configuration of Debian on VirtualBox but none of them show how to correctly partition the disk so we can get the same values when using the lsblk command as showed in the project subject.
+The source unit Gibibyte is Binary where as the target unit Gigabyte is Decimal
 
 https://www.dataunitconverter.com/gigabyte-to-gibibyte
+<img width="769" alt="image" src="https://github.com/josevazf/42-Born2BeRoot/assets/19204122/f0786d7e-f06b-4444-ad2c-2dc3236b68d7">
 
 `lsblk` - prints all block devices (except RAM disks) in a tree-like format by default
 
