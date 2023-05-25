@@ -1,15 +1,15 @@
 # 42 Common Core / Born2BeRoot
 1. [Debian](#debian)
-2. [Sudo, Groups & Hostname](#Sudo, Groups & Hostname)
-3. SSH & UFW
-4. Password Policy
-5. Monitoring Script
-6. Bonus
- - 6.1. lighttpd & PHP
- - 6.2. MariaDB
- - 6.3. Wordpress
- - 6.4. VSFTPD
- - 6.5. ShellGPT
+2. [Sudo, Groups & Hostname](#sudo-groups--hostname)
+3. [SSH & UFW](#ssh--ufw)
+4. [Password Policy](#password-policy)
+5. [Monitoring Script](#monitoring-script-cron)
+6. [Bonus](#bonus)
+   - 6.1. [lighttpd & PHP](#lighttpd--php)
+   - 6.2. [MariaDB](#mariadb)
+   - 6.3. [Wordpress](#wordpress)
+   - 6.4. [VSFTPD](#vsftpd-ftp-server)
+   - 6.5. [ShellGPT](#shellgpt)
 
 This project consists in setting up a server in a virtual machine, using Virtual Box, under specific instructions.
 
@@ -211,7 +211,7 @@ Must be done for each user and root!
 
 `passwd username` - change password
 
-## Monitoring Script (cron)
+## Monitoring Script (*cron*)
 
 https://www.geeksforgeeks.org/crontab-in-linux-with-examples/
 
@@ -387,7 +387,7 @@ http://10.11.248.140/wp-admin/
 
 `apt-get install php-mbstring` (para o kubio plugin)
 
-### VSFTPD (FTP server)sudo crontab -l
+### VSFTPD - *FTP* server
 
 File Transfer Protocol (FTP) servers can be useful for providing files to customers and for exchanging files with partners and business associates.
 
