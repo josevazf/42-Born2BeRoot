@@ -504,14 +504,17 @@ This variable is temporarily stored for the current session so we need to export
 
 Install ShellGPT:
 
-`pip3 install shell-gpt —user` - ommit `—user` if installing in a virtual environment
+`pip3 install shell-gpt`
 
 Syntax and options to use
 
-`source .bashrc`
+`source .bashrc` - confirm changes
 
 `sgpt <options> <input_query>`
 
+Every time we turn off/reboot the system we need to redo some steps. Go back to the created folder, activate the virtual environement and confirm changes with `source .bashrc´.
+
+|Syntax| Options|
 | --temperature | Changes the randomness of the output |
 | --- | --- |
 | --top-probablity | Limits to only the highest probable tokens or words |
