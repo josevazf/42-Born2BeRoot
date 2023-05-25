@@ -45,24 +45,26 @@ To do that we can use this online [Converter](https://www.dataunitconverter.com/
 
 `su -` (substitute user) - login to the root account
 
-`apt update`
+`apt update` - installs the updated versions found on the previous command
 
-`apt upgrade`
+`apt upgrade`- install the sudo package that grants root privileges to users
 
 `apt install sudo` - install the sudo package that grants root privileges to users
 
 `dpkg -l | grep sudo` - verify if sudo was successfully installed
+
+Now we need to create a new group called *user42* and add our user to that group, see some helpful commands:
+
+`sudo groupadd <groupname>` - create a new group 
+
+`sudo groupdel <groupname>` - delete a group
+It is not possible to remove the primary group of an existing user without removing the user first. The command above removes the group entry from the `/etc/group` and `/etc/gshadow` files.
 
 `adduser <username> <groupname>` - add user to group 
 
 `sudo deluser <username> <groupname>` - delete user from group 
 
 `getent group <groupname>` - view users in sudo group
-
-`sudo groupadd <groupname>` - create a new group 
-
-`sudo groupdel <groupname>` - delete a group
-It is not possible to remove the primary group of an existing user without removing the user first. The command above removes the group entry from the `/etc/group` and `/etc/gshadow` files.
 
 `id -g <username>` - displays a user’s main group ID
 
@@ -73,6 +75,8 @@ It is not possible to remove the primary group of an existing user without remov
 `sudo hostnamectl set-hostname <new_hostname>` - change hostname
 
 `hostnamectl status` - check hostname status
+
+Next we need to define some sudo rules:
 
 `sudo visudo -f /etc/sudoers.d/newsudorules` - Opening sudo files with "visudo" creates a safer structure, we created a new file called `newsudorules` in the specified directory and we will add the following codes:
 
