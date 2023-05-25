@@ -1,8 +1,41 @@
 # 42 Common Core / Born2BeRoot
 
+This project consists in setting up a server in a virtual machine, using Virtual Box, under specific instructions.
+The operating system chosen was the latest stable version of Debian at the time (bullseye 11.7.0).
+
+Requirements for the mandatory part:
+- Partitioning using LVM and according to specified definitions (different with or without bonus part);
+- Install and configure sudo following strict rules:
+  - authentication using sudo has to be limited to 3 attempts in the event of an incorrect password;
+  - a custom message has to be displayed if an erros due to a wrong password occurs when using sudo;
+  - each action using sudo has to be archived, both inputs and outputs. The log file has to be saved in the /var/log/sudo/ folder;
+  - TTY mode has to be enabled for security reasons;
+  - the paths that can be used by sudo must be restricted to: /usr/local/sbin:/user/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin 
+- Install and configure SSH only running on 4242;
+- Install and configure UFW firewall;
+- Implement a strong password policy for existing and new users using libpam-pwquality package:
+  - password has to expire every 30 days;
+  - minimum number of days allowed before the modification of a password will be set to 2;
+  - the user has to receive a warning message 7 days before their password expires;
+  - password must be at least 10 characters long, contain an uppercase letter, a lowercase letter, and a number;
+  - password must not contain more than 3 consecutive identical characters;
+  - password must not include the name of the user;
+  - password must have at leas 7 characters that are not part of the former password (does not apply to the root password);
+- Set up a cron job with a monitoring script that displays some system info on all terminals every 10 minutes;
+
+Requirements for the bonus part:
+- 
+
+
+
+
 https://www.dataunitconverter.com/gigabyte-to-gibibyte
 
 `lsblk` - prints all block devices (except RAM disks) in a tree-like format by default
+
+
+
+## Sudo, Groups & Hostname
 
 `su -` (substitute user) - login to the root account
 
@@ -14,21 +47,15 @@ https://www.dataunitconverter.com/gigabyte-to-gibibyte
 
 `dpkg -l | grep sudo` - verify if sudo was successfully installed
 
-`sudo lvresize -L +XXXm /dev/LVMGroup/xxxx` - resize the LVM partitions
+`adduser <username> <groupname>` - add user to group 
 
-`sudo resize2fs /dev/sda1 XXXm` - resize boot partition
+`sudo deluser <username> <groupname>` - delete user from group 
 
-## Sudo, Groups & Hostname
+`getent group <groupname>` - view users in sudo group
 
-``adduser <username> <groupname>` - add user to group 
+`sudo groupadd <groupname>` - create a new group 
 
-``sudo deluser <username> <groupname>` - delete user from group 
-
-``getent group <groupname>` - view users in sudo group
-
-``sudo groupadd <groupname>` - create a new group 
-
-``sudo groupdel <groupname>` - delete a group
+`sudo groupdel <groupname>` - delete a group
 It is not possible to remove the primary group of an existing user without removing the user first. The command above removes the group entry from the `/etc/group` and `/etc/gshadow` files.
 
 `id -g <username>` - displays a user’s main group ID
