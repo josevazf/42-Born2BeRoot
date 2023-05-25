@@ -1,7 +1,8 @@
 # 42 Common Core / Born2BeRoot
 
 This project consists in setting up a server in a virtual machine, using Virtual Box, under specific instructions.
-The operating system chosen was the latest stable version of ***Debian***, at the time (bullseye 11.7.0).
+
+The chosen operating system was the latest stable version of ***Debian***, at the time (bullseye 11.7.0).
 
 ### Requirements for the mandatory part
 - Partitioning using ***LVM*** and according to specified definitions (different with or without bonus part);
