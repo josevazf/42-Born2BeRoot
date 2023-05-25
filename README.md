@@ -28,20 +28,18 @@ The chosen operating system was the latest stable version of ***Debian***, at th
 - Set up a functional ***WordPress*** website using the following services: ***lighttpd***, ***MariaDB*** and ***PHP***;
 - Set up an aditional service. In this case I installed ***FTP*** and ***ShellGPT*** (command line version of ChatGPT);
 
-## Installation
+## Debian
 The initial steps to install ***Debian*** can be found in several tutorials across GitHub and Youtube so I won't detail it here. However I will specify how to correctly partition the disk so we can get the same values when using the `lsblk` command as showed in the project subject.
 
-<img width="769" alt="image" src="https://github.com/josevazf/42-Born2BeRoot/assets/19204122/f0786d7e-f06b-4444-ad2c-2dc3236b68d7">
+`lsblk` - prints all block devices (except RAM disks) in a tree-like format by default
 
-When we are defining the size for the partitions we are working with Gigabyte wich is Decimal units, however what we see when using the `lsblk` command is Gibibyte, which is Binary.
+<img width="500" alt="image" src="https://github.com/josevazf/42-Born2BeRoot/assets/19204122/ad23ed4e-4cab-46d1-8135-5b39f30c6e61">
 
-We need to convert the Gibibyte values to aproximate Gigabyte values. 
+When we are defining the size for the partitions we are working with Gigabyte wich is Decimal units, however what we see when using the `lsblk` command is Gibibyte, which is Binary. We need to convert the Gibibyte values to aproximate Gigabyte values. 
 
 To do that we can use this online [Converter](https://www.dataunitconverter.com/gigabyte-to-gibibyte).
 
-<img src="https://github.com/josevazf/42-Born2BeRoot/assets/19204122/a387287b-5e60-4538-a73b-ff19fe90aabe">
-
-`lsblk` - prints all block devices (except RAM disks) in a tree-like format by default
+<img width="500" alt="image" src="https://github.com/josevazf/42-Born2BeRoot/assets/19204122/a387287b-5e60-4538-a73b-ff19fe90aabe">
 
 ## Sudo, Groups & Hostname
 
