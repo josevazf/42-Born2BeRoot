@@ -34,7 +34,9 @@ The initial steps to install ***Debian*** can be found in several tutorials acro
 <img width="769" alt="image" src="https://github.com/josevazf/42-Born2BeRoot/assets/19204122/f0786d7e-f06b-4444-ad2c-2dc3236b68d7">
 
 When we are defining the size for the partitions we are working with Gigabyte wich is Decimal units, however what we see when using the `lsblk` command is Gibibyte, which is Binary.
-We need to convert the Gibibyte values to aproximate Gigabyte values. To do that we can use this online [Converter]([https://pages.github.com/](https://www.dataunitconverter.com/gigabyte-to-gibibyte)).
+We need to convert the Gibibyte values to aproximate Gigabyte values. 
+
+To do that we can use this online [Converter]([https://www.dataunitconverter.com/gigabyte-to-gibibyte]).
 
 <img src="https://github.com/josevazf/42-Born2BeRoot/assets/19204122/a387287b-5e60-4538-a73b-ff19fe90aabe">
 
