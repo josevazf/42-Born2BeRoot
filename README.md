@@ -80,26 +80,26 @@ Next we need to define some sudo rules:
 
 `sudo visudo -f /etc/sudoers.d/newsudorules` - Opening sudo files with "visudo" creates a safer structure, we created a new file called *newsudorules* in the specified directory and we add the following lines:
 
-`Defaults		passwd_tries=3` 
-*With Sudo, the maximum number of password attempts is 3 (3 is also standard)*
+`Defaults	passwd_tries=3` 
+<sub>*With Sudo, the maximum number of password attempts is 3 (3 is also standard)*</sub>
 
-`Defaults		badpass_message="Incorrect Password"`
-*Your error message after incorrect password attempts*
+`Defaults	badpass_message="Incorrect Password"`
+<sub>*Your error message after incorrect password attempts*</sub>
 
-`Defaults		logfile="/var/log/sudo/newsudo_log"`
-*Stores all used sudo commands in the specified file*
+`Defaults	logfile="/var/log/sudo/newsudo_log"`
+<sub>*Stores all used sudo commands in the specified file*</sub>
 
-`Defaults		log_input,log_output`
-*It is used to keep logs of inputs and outputs.*
+`Defaults	log_input,log_output`
+<sub>*It is used to keep logs of inputs and outputs.*</sub>
 
-`Defaults		iolog_dir="/var/log/sudo"`
-*Archive log_input and log_output events to the specified directory.*
+`Defaults	iolog_dir="/var/log/sudo"`
+<sub>*Archive log_input and log_output events to the specified directory.*</sub>
 
-`Defaults		requiretty`
-*Enforces TTY mode.*
+`Defaults	requiretty`
+<sub>*Enforces TTY mode.*</sub>
 
-`Defaults		secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"`
-*To limit the directories used by Sudo.*
+`Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"`
+<sub>*To limit the directories used by Sudo.*</sub>
 
 ## SSH & UFW
 
