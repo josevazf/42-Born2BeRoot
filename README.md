@@ -73,7 +73,7 @@ Sudo (su “do”) allows a system administrator to delegate authority to give c
 
 `dpkg -l | grep sudo` - verify if sudo was successfully installed
 
-Some helpful commands for user and group manipulation:
+- Some helpful commands for user and group manipulation:
 
 `sudo groupadd <groupname>` - create a new group 
 
@@ -96,7 +96,7 @@ It is not possible to remove the primary group of an existing user without remov
 
 `sudo hostnamectl set-hostname <new_hostname>` - change hostname
 
-Defining some *sudo* rules according to the project's subject:
+- Defining some *sudo* rules according to the project's subject:
 
 `sudo visudo -f /etc/sudoers.d/newsudorules` - Opening sudo files with "visudo" creates a safer structure. Here we created a new file called *newsudorules* in the specified directory and we add the following lines:
 
@@ -143,7 +143,7 @@ Openssh provides a secure channel over an unsecured network from the outside. It
 
 `sudo ufw enable` - enable firewall
 
-Some helpful commands to configure UFW ports:
+- Some helpful commands to configure UFW ports:
 
 `sudo ufw allow <port>` - add a new rule to allow port
 
@@ -159,7 +159,7 @@ Some helpful commands to configure UFW ports:
 
 `sudo ip address` - check ip address
 
-Change Network adapter to `Bridged Adapter`
+Change Network adapter to *Bridged Adapter* on VirtualBox 
 
 Lock ip address (check ip address on previous command) : `10.11.248.140`
 
