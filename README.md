@@ -297,7 +297,7 @@ phpinfo();
 ```
 
 Test with: [http://yourIPaddress:80/info.php](https://yourIPaddress:80/info.php)
-
+#
 ### MariaDB
 
 MariaDB is a database used for various purposes, such as data storage, e-commerce, logging apps, etc.
@@ -347,6 +347,7 @@ Open MariaDB and login with created user:
 
 `DROP DATABASE *database*;` - delete a database
 
+#
 ### WordPress
 
 WordPress is a content management system focused on the creation of any type of website.
@@ -373,6 +374,7 @@ Install `wget` and `zip` first:
 
 http://yourIPaddress/wp-admin/ - enter wordpress admin page
 
+#
 ### VSFTPD
 
 File Transfer Protocol (FTP) servers can be useful for providing files to customers and for exchanging files with partners and business associates.
@@ -421,6 +423,7 @@ In the server unzip the file:
 
 `unzip niveau.1.0.5.zip`
 
+#
 ### ShellGPT
 
 We need some aditional services to run ShellGPT on our terminal.
@@ -494,3 +497,4 @@ Every time we turn off/reboot the system we need to redo some steps. Go back to 
 | --shell | Used to get shell commands as output |
 | --execute | Executes the commands received as output from --shell option |
 | --code | Used to get code as output |
+
