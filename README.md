@@ -322,12 +322,13 @@ Because the default configuration leaves your MariaDB installation unsecure, we 
 `sudo mariadb` - enter *MariaDB* console
 
 Run the following commands to create a new database and user, change *user*, *database* and *password* :
-
-`CREATE DATABASE *database*;`
-`CREATE USER '*user*'@'localhost' IDENTIFIED BY '*password*';`
-`GRANT ALL ON *database*.* TO '*user*'@'localhost' IDENTIFIED BY '*password*' WITH GRANT OPTION;`
-`FLUSH PRIVILEGES;`
-`EXIT;`
+```
+CREATE DATABASE *database*;
+CREATE USER '*user*'@'localhost' IDENTIFIED BY '*password*';
+GRANT ALL ON *database*.* TO '*user*'@'localhost' IDENTIFIED BY '*password*' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+EXIT;
+```
 
 Open MariaDB and login with created user:
 
