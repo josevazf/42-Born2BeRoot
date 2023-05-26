@@ -43,7 +43,7 @@ Bellow you can find some detailed concetps and key commands to achieve what is a
 Most parts should not be followed strictly as they are merely hints of useful commands.
 
 ## Debian
-The initial steps to install ***Debian*** can be found in several tutorials across GitHub and Youtube so I won't detail it here. 
+The initial steps to install ***Debian*** can be found in several tutorials across GitHub: 
    - https://github.com/pasqualerossi/Born2BeRoot-Guide
    - https://github.com/RamonLucio/Born2beRoot
 
