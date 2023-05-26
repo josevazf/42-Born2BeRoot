@@ -23,7 +23,7 @@ The chosen operating system was the latest stable version of ***Debian***, at th
   - each action using sudo has to be archived, both inputs and outputs. The log file has to be saved in the /var/log/sudo/ folder;
   - TTY mode has to be enabled for security reasons;
   - the paths that can be used by sudo must be restricted to: /usr/local/sbin:/user/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin 
-- Install and configure ***SSH*** only running on 4242;
+- Install and configure ***SSH*** only running on port 4242;
 - Install and configure ***UFW*** firewall;
 - Implement a strong password policy for existing and new users using ***libpam-pwquality*** package:
   - password has to expire every 30 days;
