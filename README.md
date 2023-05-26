@@ -11,7 +11,7 @@
    - 6.4. [VSFTPD](#vsftpd-ftp-server)
    - 6.5. [ShellGPT](#shellgpt)
 
-This project consists in setting up a server in a virtual machine, using Virtual Box, under specific instructions.
+This project consists of setting up a server in a virtual machine, using Virtual Box, under specific instructions.
 
 The chosen operating system was the latest stable version of ***Debian***, at the time (bullseye 11.7.0).
 
@@ -56,15 +56,15 @@ To do that we can use this online [Converter](https://www.dataunitconverter.com/
 
 `su -` (substitute user) - login to the root account
 
-`apt update` - installs the updated versions found on the previous command
+`apt update` - fetches the latest version of the package list from your distro's software repository, and any third-party repositories you may have configured
 
-`apt upgrade`- install the sudo package that grants root privileges to users
+`apt upgrade`- install the updated versions found on the previous command
 
 `apt install sudo` - install the sudo package that grants root privileges to users
 
 `dpkg -l | grep sudo` - verify if sudo was successfully installed
 
-Now we need to create a new group called *user42* and add our user to that group, see some helpful commands:
+Now we need to create a new group called *user42* and add our user to that group. During defense we will create a new user for the evaluator and add it to a new group called *evaluating*. Some helpful commands to achieve that:
 
 `sudo groupadd <groupname>` - create a new group 
 
@@ -87,9 +87,9 @@ It is not possible to remove the primary group of an existing user without remov
 
 `sudo hostnamectl set-hostname <new_hostname>` - change hostname
 
-Next we need to define some sudo rules:
+Next we define some *sudo* rules according to the project's subject:
 
-`sudo visudo -f /etc/sudoers.d/newsudorules` - Opening sudo files with "visudo" creates a safer structure, we created a new file called *newsudorules* in the specified directory and we add the following lines:
+`sudo visudo -f /etc/sudoers.d/newsudorules` - Opening sudo files with "visudo" creates a safer structure. Here we created a new file called *newsudorules* in the specified directory and we add the following lines:
 
 `Defaults	passwd_tries=3` 
 <sub>*With Sudo, the maximum number of password attempts is 3 (3 is also standard)*</sub>
@@ -114,7 +114,7 @@ Next we need to define some sudo rules:
 
 ## SSH & UFW
 
-Openssh provides a secure channel over an unsecured network from the outside
+Openssh provides a secure channel over an unsecured network from the outside.
 
 `sudo apt install openssh-server` - installs the openssh-server package
 
@@ -122,9 +122,9 @@ Openssh provides a secure channel over an unsecured network from the outside
 
 `sudo vim /etc/ssh/sshd_config` - opens the SSH config file:
 
-Change `Port 22` to `Port 4242`
+   - Change `Port 22` to `Port 4242`
 
-Change `PermitRootLogin prohibit-password` to `PermitRootLogin no`
+   - Change `PermitRootLogin prohibit-password` to `PermitRootLogin no`
 
 `sudo systemctl restart ssh` - restart ssh service
 
@@ -134,21 +134,23 @@ Change `PermitRootLogin prohibit-password` to `PermitRootLogin no`
 
 `sudo ufw enable` - enable firewall
 
-`sudo ufw allow <port>` - we add a new rule for our firewall to allow port
+Now we need to add a rule to allow port *4242* so we can use our *SSH* channel. During defense we will have to allow port *8080* and then delete it. Some helpful commands to achieve that:
 
-`sudo ufw deny <port>` - remove rule to allow port
+`sudo ufw allow <port>` - add a new rule to allow port
+
+`sudo ufw deny <port>` -  deny the rule to allow port
 
 `sudo ufw delete allow <port>` - remove port allow rule
 
 `sudo ufw delete deny <port>` - remove port deny rule
 
-`sudo ufw status numbered`
+`sudo ufw status numbered` - check configured rules with a number identifier
 
-`sudo ufw delete <port index>`
+`sudo ufw delete <port index>` - delete rule according to the identifier found with previous command
 
 `sudo ip address` - check ip address
 
-192.168.1.82
+
 
 Change Network adapter to `Bridged Adapter`
 
@@ -387,7 +389,7 @@ http://10.11.248.140/wp-admin/
 
 `apt-get install php-mbstring` (para o kubio plugin)
 
-### VSFTPD - *FTP* server
+### VSFTPD
 
 File Transfer Protocol (FTP) servers can be useful for providing files to customers and for exchanging files with partners and business associates.
 
