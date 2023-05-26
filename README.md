@@ -73,7 +73,7 @@ Sudo (su “do”) allows a system administrator to delegate authority to give c
 
 `dpkg -l | grep sudo` - verify if sudo was successfully installed
 
-- Some helpful commands for user and group manipulation:
+// Some helpful commands for user and group manipulation:
 
 `sudo groupadd <groupname>` - create a new group 
 
@@ -96,7 +96,7 @@ It is not possible to remove the primary group of an existing user without remov
 
 `sudo hostnamectl set-hostname <new_hostname>` - change hostname
 
-- Defining some *sudo* rules according to the project's subject:
+// Defining some *sudo* rules according to the project's subject:
 
 `sudo visudo -f /etc/sudoers.d/newsudorules` - Opening sudo files with "visudo" creates a safer structure. Here we created a new file called *newsudorules* in the specified directory and we add the following lines:
 
@@ -143,7 +143,7 @@ Openssh provides a secure channel over an unsecured network from the outside. It
 
 `sudo ufw enable` - enable firewall
 
-- Some helpful commands to configure UFW ports:
+// Some helpful commands to configure UFW ports:
 
 `sudo ufw allow <port>` - add a new rule to allow port
 
@@ -222,8 +222,6 @@ Must be done for each user and root!
 
 ## Monitoring Script (*cron*)
 
-https://www.geeksforgeeks.org/crontab-in-linux-with-examples/
-
 `sort` = alphabetical sorting.
 `uniq` = separating repeating lines.
 `$1,$2...` = We can say that Mer $1, haba $2, yesterday $3 or $4 columns are holding.
@@ -263,13 +261,9 @@ Cron is located under `/etc/init.d`
 
 ## Bonus
 
-`service —status-all` - check services
-
-`ss -tunlp` - check ports and ip
-
 ### Lighttpd & PHP
 
-Lighttpd is a HTTP web server designed to be fast, secure, flexible and standards-compliant
+Lighttpd is a HTTP web server designed to be fast, secure, flexible and standards-compliant.
 
 `sudo apt install lighttpd` - install lighttpd
 
@@ -278,12 +272,6 @@ Lighttpd is a HTTP web server designed to be fast, secure, flexible and standard
 `dpkg -l | grep lighttpd` - check if lighttpd is installed
 
 `sudo lighttpd -v` - check version
-
-Check if apache2 was installed:
-
-`systemctl status apache2`
-
-`sudo apt purge apache2`
 
 `sudo systemctl start lighttpd` - start lighttpd
 
@@ -294,8 +282,6 @@ Check if apache2 was installed:
 `sudo ufw allow http`
 
 `sudo ufw status`
-
-Port forwarding VM, new rule, host port `8080` to foward to guest `80`
 
 Test with: https://127.0.0.1:8080 or http://localhost:8080
 
@@ -314,7 +300,7 @@ phpinfo();
 ?>
 ```
 
-Test with: [http://127.0.0.1:8080/info.php](https://127.0.0.1:8080/info.php) or http://localhost:8080
+Test with: [http://yourIPaddress:8080/info.php](https://yourIPaddress:8080/info.php)
 
 ### MariaDB
 
