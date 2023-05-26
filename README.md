@@ -11,7 +11,7 @@
    - 6.4. [VSFTPD](#vsftpd-ftp-server)
    - 6.5. [ShellGPT](#shellgpt)
 
-This project consists of setting up a server in a virtual machine, using Virtual Box, under specific instructions.
+This project consists of setting up a server in a virtual machine, using Virtual Box, under [specific instructions](/docs/Born2beRoot_en.subject.pdf).
 
 The chosen operating system was the latest stable version of ***Debian***, at the time (bullseye 11.7.0).
 
