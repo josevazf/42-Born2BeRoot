@@ -232,15 +232,11 @@ Basic info on some of the commands user:
 - `awk '{ft += $2} END {print ft}'` = ft It can be thought of as a variable, it adds the data contained in $2 in ft and prints ft to the screen.
 - `cut -c 9- | xargs | awk '{printf("%.1f%%")` = "cut -c 9-" Used to delete a character or a sequence of characters. "xargs" As a function, it forwards the previously used output to the next command. - - `"printf("%.1f%%%")"` Takes 1 character after "." in float value type and adds "%" at the end.
 
-`uname -a` - prints all architecture information, except if the CPU is unkown
-`grep “physical id” /proc/cpuinfo | wc -l` - number of fisical cores obtained from the file in the directory. We count the lines with `wc -l` 
-`grep processor /proc/cpuinfo | wc -l` - show the number of virtual cores
-
-`free —mega | awk '$1 == "Mem:" {print $3}'` - see information about ram, measured in mb. We use awk t process the data. Comparing if the first word of a row is equal to “Mem:” we print the third word of that row, which will be the used memory
-
 Cron is located under `/etc/init.d`
 
 `sudo vim /root/monitoring.sh` - create and open monitoring script file
+
+The script can be found here, copy the content to the created monitoring.sh file.
 
 `sudo chmod 777 monitoring.sh` - give full permissions to the monitoring script file
 
@@ -282,24 +278,26 @@ Lighttpd is a HTTP web server designed to be fast, secure, flexible and standard
 
 `sudo ufw status`
 
-Test with: https://127.0.0.1:8080 or http://localhost:8080
+Test with: https://yourIPaddress:80
 
 `sudo apt install php-cgi php-mysql`
 
-> `sudo lighty-enable-mod fastcgi
-sudo lighty-enable-mod fastcgi-php` 
+`sudo lighty-enable-mod fastcgi`
+
+`sudo lighty-enable-mod fastcgi-php` 
+
 `sudo service lighttpd force-reload`
-> 
 
 Create a file in `/var/www/html` named `info.php` and write:
 
-```php
+```
+php
 <?php
 phpinfo();
 ?>
 ```
 
-Test with: [http://yourIPaddress:8080/info.php](https://yourIPaddress:8080/info.php)
+Test with: [http://yourIPaddress:80/info.php](https://yourIPaddress:80/info.php)
 
 ### MariaDB
 
@@ -312,47 +310,48 @@ Because the default configuration leaves your MariaDB installation unsecure, we 
 
  It will ask the following:
 
-`Switch to unix_socket autentication? → N
-Change the root password? → N
-Remove anonymous users? → Y
-Disallow root login remotely? → Y
-Remove test database and acces to it? → Y
-Reaload privilege tables now? → Y`
+- `Switch to unix_socket autentication? → N`
+- Change the root password? → N`
+- Remove anonymous users? → Y`
+- Disallow root login remotely? → Y`
+- Remove test database and acces to it? → Y`
+- Reaload privilege tables now? → Y`
 
 `sudo systemctl restart mariadb`
 
 `sudo mariadb` - enter mariadb console
 
-`CREATE DATABASE database;
-CREATE USER 'user'@'localhost' IDENTIFIED BY 'WPpassw0rd';
-GRANT ALL ON database.* TO 'user'@'localhost' IDENTIFIED BY 'WPpassw0rd' WITH GRANT OPTION;,
-FLUSH PRIVILEGES;
-EXIT;`
+Run the following commands to create a new database and user, change *user*, *database* and *password* :
+
+`CREATE DATABASE *database*;`
+`CREATE USER '*user*'@'localhost' IDENTIFIED BY '*password*';`
+`GRANT ALL ON *database*.* TO '*user*'@'localhost' IDENTIFIED BY '*password*' WITH GRANT OPTION;`
+`FLUSH PRIVILEGES;`
+`EXIT;`
 
 Open MariaDB and login with created user:
 
-`mariadb -u user -p`
+`mariadb -u *user* -p`
 
-`SHOW DATABASES;`
+`SHOW DATABASES;` - see if your database shows in the list
 
-______________________________________________________
-DELETE, ALTER, REVOKE USER
+// Some useful commands to add, delete or alter users and databases in MariaDB:
 
-`SELECT User, Host FROM mysql.user;` - list al mysql users
+`SELECT User, Host FROM mysql.user;` - list all mysql users
 
-`SHOW GRANTS FOR ‘user’@’localhost’;` - list grants for a mysql user
+`SHOW GRANTS FOR ‘*user*’@’localhost’;` - list grants for a mysql *user*
 
-`REVOKE ALL PRIVILEGES, GRANT OPTION FROM ‘user’@’localhost’;` - revoke all grants for q mysql user
+`REVOKE ALL PRIVILEGES, GRANT OPTION FROM ‘*user*’@’localhost’;` - revoke all grants for mysql *user*
 
-`ALTER USER 'user'@'localhost' IDENTIFIED BY 'new_password';` - change password
+`ALTER USER '*user*'@'localhost' IDENTIFIED BY '*new_password*';` - change password
 
-`DROP DATABASE database;` - delete a database
+`DROP DATABASE *database*;` - delete a database
 
 ### WordPress
 
-WordPress is a content management system focused on the creation of any type of website
+WordPress is a content management system focused on the creation of any type of website.
 
-We must install `wget` and `zip` first:
+Install `wget` and `zip` first:
 
 `sudo apt install wget zip`
 
@@ -362,24 +361,17 @@ We must install `wget` and `zip` first:
 
 `sudo rm /var/www/latest.tar.gz` - delete .tar file
 
-`sudo mv html/ html_old/` - rename html folder to html_old
+`sudo mv html/html_old/` - rename html folder to html_old
 
-`sudo mv wordpress/ html/` - rename wordpress folder to html
+`sudo mv wordpress/html/` - rename wordpress folder to html
 
 `sudo chmod -R 755 html` - set permissions to html folder
 
 `sudo cp wp-config-sample.php wp-config.php` - create a copy of sample config file
 
-`sudo vim wp-config.php` - edit the file with mariadb credentials
+`sudo nano wp-config.php` - edit the file with MariaDB credentials
 
-> Site Title: Born2BeRoot (jrocha-v)
-Username: jrocha-v
-Password: uIZ*F(H(4I7$^DErC4
-> 
-
-http://10.11.248.140/wp-admin/
-
-`apt-get install php-mbstring` (para o kubio plugin)
+http://yourIPaddress/wp-admin/ - enter wordpress admin page
 
 ### VSFTPD
 
@@ -393,43 +385,33 @@ VSFTP is a secure, stable, and fast FTP server. It can greatly decrease the chan
 
 `sudo ufw allow 21` - open door 21
 
-`sudo ufw status`
+`sudo ufw status` - check UFW status
 
 `sudo nano /etc/vsftpd.conf` - remove # write_enable=YES and add:
 
-> `user_sub_token=$USER
+```
+user_sub_token=$USER
+user_sub_token=$USER
 local_root=/home/$USER/ftp
 userlist_enalbe=YES
 userlist_file=/etc/vsftpd.userlist
 userlist_deny=NO`
-> 
+``` 
 
-`sudo mkdir /home/username/ftp` - open an ftp folder in the directory of our user
+`sudo mkdir /home/username/ftp` - create a *FTP* folder in the directory of our user
 
-`sudo mkdir /home/username/ftp/files` - open the files folder
+`sudo mkdir /home/username/ftp/files` - create a files folder
 
 `sudo chown nobody:nogroup /home/username/ftp` - set the ownership and group to nobody
 
-`sudo nano /etc/vsftpd.userlist` - add 0 and username
+`sudo nano /etc/vsftpd.userlist` - add 0 and *username*
 
-To install wordpress themes we use FTP to transfer files to our server
-
-https://www.baeldung.com/linux/ftp-transfers
-
-`sudo apt-get install unzip` - install unzip
-
-In server set all permissions to the /themes folder:
-
-`cd /var/www/html/wp-content
-sudo chmod 777 themes`
-
-https://wordpress.org/themes/myself/
-
+If we would like to transfer files from our machine to the virtual server
 In terminal to the original folder where the .zip file was downloaded and login to ftp:
 
 `cd Downloads`
 
-`ftp 10.11.248.140` - username….password….
+`ftp *yourIPaddress*` - username….password….
 
 ftp> `cd /var/www/html/wp-content/themes` - go to destination folder in server
 ftp> `binary` - switch to binary transfer
@@ -439,11 +421,7 @@ In the server unzip the file:
 
 `unzip niveau.1.0.5.zip`
 
-Go to wordpress page and install the theme
-
 ### ShellGPT
-
-sk-Yv0r2RG0xgF2O8KdYeJHr3BlbkFJHdE9S0ZgOoG8vv6xDFTs
 
 We need some aditional services to run ShellGPT on our terminal.
 First lets check if we already have Python installed:
@@ -506,7 +484,7 @@ Syntax and options to use
 
 `sgpt <options> <input_query>`
 
-Every time we turn off/reboot the system we need to redo some steps. Go back to the created folder, activate the virtual environement and confirm changes with `source .bashrc´.
+Every time we turn off/reboot the system we need to redo some steps. Go back to the created folder, activate the virtual environement and confirm changes with `source .bashrc`.
 
 |Syntax| Options|
 | --temperature | Changes the randomness of the output |
