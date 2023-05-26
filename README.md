@@ -10,7 +10,7 @@
    - 6.3. [Wordpress](#wordpress)
    - 6.4. [VSFTPD](#vsftpd-ftp-server)
    - 6.5. [ShellGPT](#shellgpt)
-7. [Evaluation](#Evaluation)
+7. [Evaluation](#evaluation)
 
 This project consists of setting up a server in a virtual machine, using Virtual Box, under [specific instructions](/docs/Born2beRoot_en.subject.pdf).
 
@@ -501,7 +501,7 @@ Every time we turn off/reboot the system we need to redo some steps. Go back to 
 | --code | Used to get code as output |
 
 ## Evaluation
-**Useful commands for the evaluation**
+*Useful commands for the evaluation*
 
 USER
 ```bash
