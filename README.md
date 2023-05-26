@@ -37,7 +37,7 @@ The chosen operating system was the latest stable version of ***Debian***, at th
 
 ### Requirements for the bonus part:
 - Set up a functional ***WordPress*** website using the following services: ***lighttpd***, ***MariaDB*** and ***PHP***;
-- Set up an aditional service. In this case I installed ***FTP*** and ***ShellGPT*** (command line version of ChatGPT);
+- Set up an aditional service. In this case I chose to set up ***FTP*** and ***ShellGPT*** (command line version of ChatGPT);
 
 Bellow you can find some detailed concetps and key commands to achieve what is asked of this project. 
 Most parts should not be followed strictly as they are merely hints of useful commands.
