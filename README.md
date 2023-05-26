@@ -127,23 +127,25 @@ Openssh provides a secure channel over an unsecured network from the outside. It
 
 `sudo apt install openssh-server` - installs the openssh-server package
 
-`sudo service ssh status` or `sudo systemctl status ssh` - view SSH status
+`sudo service ssh status` or `sudo systemctl status ssh` - view *SSH* status
 
-`sudo vim /etc/ssh/sshd_config` - opens the SSH config file:
+`sudo vim /etc/ssh/sshd_config` - opens the *SSH* config file:
 
    - Change `Port 22` to `Port 4242`
 
    - Change `PermitRootLogin prohibit-password` to `PermitRootLogin no`
 
-`sudo systemctl restart ssh` - restart ssh service
+`sudo systemctl restart ssh` - restart *SSH* service
 
-`sudo apt install ufw` - install “Uncomplicated Firewall”
+Uncomplicated Firewall (*UFW*) is a program for managing a netfilter firewall designed to be easy to use. It uses a command-line interface consisting of a small number of simple commands, and uses iptables for configuration.
+
+`sudo apt install ufw` - install firewall
 
 `sudo ufw status` - check status of firewall
 
 `sudo ufw enable` - enable firewall
 
-// Some helpful commands to configure UFW ports:
+// Some helpful commands to configure *UFW* ports:
 
 `sudo ufw allow <port>` - add a new rule to allow port
 
@@ -157,22 +159,22 @@ Openssh provides a secure channel over an unsecured network from the outside. It
 
 `sudo ufw delete <port index>` - delete rule according to the identifier found with previous command
 
+// Closing DHCP port and setting IP address as static 
+
+Change Network adapter to *Bridged Adapter* on VirtualBox.
+
 `sudo ip address` - check ip address
 
-Change Network adapter to *Bridged Adapter* on VirtualBox 
-
-Lock ip address (check ip address on previous command) : `10.11.248.140`
-
-`sudo nano /etc/network/interfaces` - opens the interfaces file describer:
-
-> #The primary network interface
-****`auto enp0s3
+`sudo nano /etc/network/interfaces` - open the interfaces file describer and edit:
+```
+#The primary network interface
+auto enp0s3
 iface enp0s3 inet static
-address 10.11.248.140
+address 'yourIPaddress'
 netmask 255.255.0.0
-gateway 10.11.254.254
-dns-nameservers 10.11.254.254`
-> 
+gateway xx.xx.254.254
+dns-nameservers xx.xx.254.254
+```
 
 ## Password Policy
 
@@ -186,19 +188,17 @@ dns-nameservers 10.11.254.254`
 
 `chage -l <username>` - check password condition
 
+Confirm for existing users:
+
 `sudo chage -M 30 <username>`
 
 `sudo chage -m 2 <username>`
 
 `sudo chage -W 7 <username>`
 
-Must be done for each user and root!
-
 `sudo apt install libpam-pwquality` - install the libpam-pwquality package to increase the security of passwords
 
 `sudo vim /etc/pam.d/common-password` - open document and add after password requisite pam_pwquality.so 
-
-`sudo nano /etc/security/pwquality.conf` - open and edit
 
 `difok = 7` - number of characters that must not be present in the old password
 
@@ -222,14 +222,15 @@ Must be done for each user and root!
 
 ## Monitoring Script (*cron*)
 
-`sort` = alphabetical sorting.
-`uniq` = separating repeating lines.
-`$1,$2...` = We can say that Mer $1, haba $2, yesterday $3 or $4 columns are holding.
-`free -m` = It shows the amount of Ram in Mebibytes. The reason for doing so is to calculate the percentage over the uses of the script, etc. for us to do.
-`grep '^/dev/'` = ^ takes the places starting with the word after the suffix.
-`grep -v '/boot$'` = -v The suffix indicates the word to be extracted
-`awk '{ft += $2} END {print ft}'` = ft It can be thought of as a variable, it adds the data contained in $2 in ft and prints ft to the screen.
-`cut -c 9- | xargs | awk '{printf("%.1f%%")` = "cut -c 9-" Used to delete a character or a sequence of characters. "xargs" As a function, it forwards the previously used output to the next command. `"printf("%.1f%%%")"` Takes 1 character after "." in float value type and adds "%" at the end.
+Basic info on some of the commands user:
+- `sort` = alphabetical sorting.
+- `uniq` = separating repeating lines.
+- `$1,$2...` = We can say that Mer $1, haba $2, yesterday $3 or $4 columns are holding.
+- `free -m` = It shows the amount of Ram in Mebibytes. The reason for doing so is to calculate the percentage over the uses of the script, etc. for us to do.
+- `grep '^/dev/'` = ^ takes the places starting with the word after the suffix.
+- `grep -v '/boot$'` = -v The suffix indicates the word to be extracted
+- `awk '{ft += $2} END {print ft}'` = ft It can be thought of as a variable, it adds the data contained in $2 in ft and prints ft to the screen.
+- `cut -c 9- | xargs | awk '{printf("%.1f%%")` = "cut -c 9-" Used to delete a character or a sequence of characters. "xargs" As a function, it forwards the previously used output to the next command. - - `"printf("%.1f%%%")"` Takes 1 character after "." in float value type and adds "%" at the end.
 
 `uname -a` - prints all architecture information, except if the CPU is unkown
 `grep “physical id” /proc/cpuinfo | wc -l` - number of fisical cores obtained from the file in the directory. We count the lines with `wc -l` 
@@ -241,9 +242,7 @@ Cron is located under `/etc/init.d`
 
 `sudo vim /root/monitoring.sh` - create and open monitoring script file
 
-”PASTE CONTENTS”
-
-`sudo chmod 777 monitoring.sh` - give full permissions to the monitor script file
+`sudo chmod 777 monitoring.sh` - give full permissions to the monitoring script file
 
 `sudo systemctl status cron` - check if cron is active
 
@@ -255,9 +254,9 @@ Cron is located under `/etc/init.d`
 
 `sudo crontab -u root -l` - check root’s scheduled cron jobs
 
-> `/etc/init.d/cron stop` - stop cron service
-`/etc/init.d/cron start` - start cron service
-> 
+- `/etc/init.d/cron stop` - stop cron service
+
+- `/etc/init.d/cron start` - start cron service
 
 ## Bonus
 
