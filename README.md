@@ -308,21 +308,22 @@ MariaDB is a database used for various purposes, such as data storage, e-commerc
 Because the default configuration leaves your MariaDB installation unsecure, we will use a script provided by the mariadb-server package to restrict access to the server and remove unused accounts:
 `sudo mysql_secure_installation`
 
- It will ask the following:
-
-- Switch to unix_socket autentication? → N
-- Change the root password? → N
-- Remove anonymous users? → Y
-- Disallow root login remotely? → Y
-- Remove test database and acces to it? → Y
-- Reaload privilege tables now? → Y
+It will ask the following:
+```bash
+Switch to unix_socket autentication? → N
+Change the root password? → N
+Remove anonymous users? → Y
+Disallow root login remotely? → Y
+Remove test database and acces to it? → Y
+Reaload privilege tables now? → Y
+```
 
 `sudo systemctl restart mariadb`
 
 `sudo mariadb` - enter *MariaDB* console
 
 Run the following commands to create a new database and user, change *user*, *database* and *password* :
-```mariadb
+```bash
 CREATE DATABASE *database*;
 CREATE USER '*user*'@'localhost' IDENTIFIED BY '*password*';
 GRANT ALL ON *database*.* TO '*user*'@'localhost' IDENTIFIED BY '*password*' WITH GRANT OPTION;
@@ -499,8 +500,7 @@ Every time we turn off/reboot the system we need to redo some steps. Go back to 
 | --execute | Executes the commands received as output from --shell option |
 | --code | Used to get code as output |
 
-##Evaluation
-
+## Evaluation
 **Useful commands for the evaluation**
 
 USER
