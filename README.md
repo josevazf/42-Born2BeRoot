@@ -488,7 +488,6 @@ Every time we turn off/reboot the system we need to redo some steps. Go back to 
 
 | Syntax | Options |
 | --temperature | Changes the randomness of the output |
-| --- | --- |
 | --top-probablity | Limits to only the highest probable tokens or words |
 | --chat | Used to have a conversation with a unique name |
 | --shell | Used to get shell commands as output |
