@@ -10,6 +10,7 @@
    - 6.3. [Wordpress](#wordpress)
    - 6.4. [VSFTPD](#vsftpd-ftp-server)
    - 6.5. [ShellGPT](#shellgpt)
+7. [Evaluation](#Evaluation)
 
 This project consists of setting up a server in a virtual machine, using Virtual Box, under [specific instructions](/docs/Born2beRoot_en.subject.pdf).
 
@@ -166,7 +167,7 @@ Change Network adapter to *Bridged Adapter* on VirtualBox.
 `sudo ip address` - check ip address
 
 `sudo nano /etc/network/interfaces` - open the interfaces file describer and edit:
-```
+```bash
 #The primary network interface
 auto enp0s3
 iface enp0s3 inet static
@@ -189,7 +190,7 @@ dns-nameservers xx.xx.254.254
 `chage -l <username>` - check password condition
 
 Confirm for existing users:
-```
+```bash
 sudo chage -M 30 <username>
 sudo chage -m 2 <username>
 sudo chage -W 7 <username>
@@ -259,7 +260,7 @@ The script can be found [here](docs/monitoring.sh), copy the content to the crea
 
 Lighttpd is a HTTP web server designed to be fast, secure, flexible and standards-compliant.
 
-`sudo apt install lighttpd` - install lighttpd
+```sudo apt install lighttpd``` - install lighttpd
 
 `sudo ufw allow 80` - port 80 Standard port for HTTP
 
@@ -321,7 +322,7 @@ Because the default configuration leaves your MariaDB installation unsecure, we 
 `sudo mariadb` - enter *MariaDB* console
 
 Run the following commands to create a new database and user, change *user*, *database* and *password* :
-```
+```mariadb
 CREATE DATABASE *database*;
 CREATE USER '*user*'@'localhost' IDENTIFIED BY '*password*';
 GRANT ALL ON *database*.* TO '*user*'@'localhost' IDENTIFIED BY '*password*' WITH GRANT OPTION;
@@ -391,7 +392,7 @@ VSFTP is a secure, stable, and fast FTP server. It can greatly decrease the chan
 
 `sudo nano /etc/vsftpd.conf` - remove # write_enable=YES and add:
 
-```
+```bash
 user_sub_token=$USER
 user_sub_token=$USER
 local_root=/home/$USER/ftp
@@ -498,3 +499,76 @@ Every time we turn off/reboot the system we need to redo some steps. Go back to 
 | --execute | Executes the commands received as output from --shell option |
 | --code | Used to get code as output |
 
+##Evaluation
+
+**Useful commands for the evaluation**
+
+USER
+```bash
+uname -a
+sudo adduser <username>
+sudo chage -l <username>
+sudo adduser <username> sudo
+getent group sudo
+sudo adduser <username> user42
+getent group user42
+sudo groupadd evaluating
+sudo adduser <username> evaluating
+getent group evaluating
+````
+
+HOSTNAME
+```bash
+hostnamectl
+sudo hostnamectl set-hostname <new>
+hostnamectl status
+sudo reboot
+lsblk
+```
+
+SUDO
+```bash
+dpkg -l | grep sudo
+nano /etc/sudoers.d/newsudorules
+sudo aa-status
+```
+
+UFW
+```bash
+sudo ufw status
+sudo ufw status numbered
+sudo ufw allow 8080
+sudo ufw delete <number>
+```
+
+SHH
+```bash
+sudo service ssh status
+ssh <username>@ipadd -p 4242
+```
+
+PASSWORD
+```bash
+nano /etc/login.defs
+nano /etc/pam.d/common-password
+```
+
+CRON 
+```bash
+sudo crontab -l
+sudo systemctl status cron
+sudo nano /root/monitoring.sh
+/etc/init.d/cron stop
+/etc/init.d/cron start
+```
+
+BONUS
+```bash
+sudo systemctl status lighttpd
+sudo systemctl status mariadb
+ftp ipadd
+cd cmdline-chatgpt
+source chatgpt_cli/bin/activate
+source .bashrc
+sgpt <options> <input_query>
+```
