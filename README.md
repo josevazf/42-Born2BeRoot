@@ -189,12 +189,11 @@ dns-nameservers xx.xx.254.254
 `chage -l <username>` - check password condition
 
 Confirm for existing users:
-
-`sudo chage -M 30 <username>`
-
-`sudo chage -m 2 <username>`
-
-`sudo chage -W 7 <username>`
+```
+sudo chage -M 30 <username>
+sudo chage -m 2 <username>
+sudo chage -W 7 <username>
+```
 
 `sudo apt install libpam-pwquality` - install the libpam-pwquality package to increase the security of passwords
 
