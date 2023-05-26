@@ -236,7 +236,7 @@ Cron is located under `/etc/init.d`
 
 `sudo vim /root/monitoring.sh` - create and open monitoring script file
 
-The script can be found here, copy the content to the created monitoring.sh file.
+The script can be found [here](docs/monitoring.sh), copy the content to the created monitoring.sh file.
 
 `sudo chmod 777 monitoring.sh` - give full permissions to the monitoring script file
 
@@ -310,16 +310,16 @@ Because the default configuration leaves your MariaDB installation unsecure, we 
 
  It will ask the following:
 
-- `Switch to unix_socket autentication? → N`
-- Change the root password? → N`
-- Remove anonymous users? → Y`
-- Disallow root login remotely? → Y`
-- Remove test database and acces to it? → Y`
-- Reaload privilege tables now? → Y`
+- Switch to unix_socket autentication? → N
+- Change the root password? → N
+- Remove anonymous users? → Y
+- Disallow root login remotely? → Y
+- Remove test database and acces to it? → Y
+- Reaload privilege tables now? → Y
 
 `sudo systemctl restart mariadb`
 
-`sudo mariadb` - enter mariadb console
+`sudo mariadb` - enter *MariaDB* console
 
 Run the following commands to create a new database and user, change *user*, *database* and *password* :
 
@@ -335,7 +335,7 @@ Open MariaDB and login with created user:
 
 `SHOW DATABASES;` - see if your database shows in the list
 
-// Some useful commands to add, delete or alter users and databases in MariaDB:
+// Some useful commands to add, delete or alter users and databases in *MariaDB*:
 
 `SELECT User, Host FROM mysql.user;` - list all mysql users
 
@@ -411,7 +411,7 @@ In terminal to the original folder where the .zip file was downloaded and login 
 
 `cd Downloads`
 
-`ftp *yourIPaddress*` - username….password….
+`ftp yourIPaddress` - username….password….
 
 ftp> `cd /var/www/html/wp-content/themes` - go to destination folder in server
 ftp> `binary` - switch to binary transfer
