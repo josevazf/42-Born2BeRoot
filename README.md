@@ -51,13 +51,13 @@ However I will specify how to correctly partition the disk so we can get the sam
 
 `lsblk` - prints all block devices (except RAM disks) in a tree-like format by default
 
-<img width="500" alt="image" src="https://github.com/josevazf/42-Born2BeRoot/assets/19204122/ad23ed4e-4cab-46d1-8135-5b39f30c6e61">
+<img width="500" alt="image" src="https://github.com/josevazf/42-Born2BeRoot/assets/19204122/37830db9-47e9-4d26-b108-afd6213476b4">
 
 When we are defining the size for the partitions we are working with Gigabyte wich is Decimal units, however what we see when using the `lsblk` command is Gibibyte, which is Binary. We need to convert the Gibibyte values to aproximate Gigabyte values. 
 
 To do that we can use this online [Converter](https://www.dataunitconverter.com/gigabyte-to-gibibyte).
 
-<img width="500" alt="image" src="https://github.com/josevazf/42-Born2BeRoot/assets/19204122/a387287b-5e60-4538-a73b-ff19fe90aabe">
+<img width="500" alt="image" src="https://github.com/josevazf/42-Born2BeRoot/assets/19204122/a7a8faea-fd78-4bf5-b53b-e7c2fcc126a8">
 
 ## Sudo, Groups & Hostname
 
