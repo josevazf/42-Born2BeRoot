@@ -39,8 +39,15 @@ The chosen operating system was the latest stable version of ***Debian***, at th
 - Set up a functional ***WordPress*** website using the following services: ***lighttpd***, ***MariaDB*** and ***PHP***;
 - Set up an aditional service. In this case I installed ***FTP*** and ***ShellGPT*** (command line version of ChatGPT);
 
+Bellow you can find some detailed concetps and key commands to achieve what is asked of this project. 
+Most parts should not be followed strictly as they are merely hints of useful commands.
+
 ## Debian
-The initial steps to install ***Debian*** can be found in several tutorials across GitHub and Youtube so I won't detail it here. However I will specify how to correctly partition the disk so we can get the same values when using the `lsblk` command as showed in the project subject.
+The initial steps to install ***Debian*** can be found in several tutorials across GitHub and Youtube so I won't detail it here. 
+   - https://github.com/pasqualerossi/Born2BeRoot-Guide
+   - https://github.com/RamonLucio/Born2beRoot
+
+However I will specify how to correctly partition the disk so we can get the same values when using the `lsblk` command as showed in the project subject.
 
 `lsblk` - prints all block devices (except RAM disks) in a tree-like format by default
 
@@ -54,6 +61,8 @@ To do that we can use this online [Converter](https://www.dataunitconverter.com/
 
 ## Sudo, Groups & Hostname
 
+Sudo (su “do”) allows a system administrator to delegate authority to give certain users (or groups of users) the ability to run some (or all) commands as root or another user.
+
 `su -` (substitute user) - login to the root account
 
 `apt update` - fetches the latest version of the package list from your distro's software repository, and any third-party repositories you may have configured
@@ -64,7 +73,7 @@ To do that we can use this online [Converter](https://www.dataunitconverter.com/
 
 `dpkg -l | grep sudo` - verify if sudo was successfully installed
 
-Now we need to create a new group called *user42* and add our user to that group. During defense we will create a new user for the evaluator and add it to a new group called *evaluating*. Some helpful commands to achieve that:
+Some helpful commands for user and group manipulation:
 
 `sudo groupadd <groupname>` - create a new group 
 
@@ -87,7 +96,7 @@ It is not possible to remove the primary group of an existing user without remov
 
 `sudo hostnamectl set-hostname <new_hostname>` - change hostname
 
-Next we define some *sudo* rules according to the project's subject:
+Defining some *sudo* rules according to the project's subject:
 
 `sudo visudo -f /etc/sudoers.d/newsudorules` - Opening sudo files with "visudo" creates a safer structure. Here we created a new file called *newsudorules* in the specified directory and we add the following lines:
 
@@ -114,11 +123,11 @@ Next we define some *sudo* rules according to the project's subject:
 
 ## SSH & UFW
 
-Openssh provides a secure channel over an unsecured network from the outside.
+Openssh provides a secure channel over an unsecured network from the outside. It's a connectivity tool for remote login with the SSH protocol. It encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks.
 
 `sudo apt install openssh-server` - installs the openssh-server package
 
-`sudo service ssh status` or `sudo systemctl status ssh` - view the SSH status
+`sudo service ssh status` or `sudo systemctl status ssh` - view SSH status
 
 `sudo vim /etc/ssh/sshd_config` - opens the SSH config file:
 
@@ -134,7 +143,7 @@ Openssh provides a secure channel over an unsecured network from the outside.
 
 `sudo ufw enable` - enable firewall
 
-Now we need to add a rule to allow port *4242* so we can use our *SSH* channel. During defense we will have to allow port *8080* and then delete it. Some helpful commands to achieve that:
+Some helpful commands to configure UFW ports:
 
 `sudo ufw allow <port>` - add a new rule to allow port
 
@@ -149,8 +158,6 @@ Now we need to add a rule to allow port *4242* so we can use our *SSH* channel. 
 `sudo ufw delete <port index>` - delete rule according to the identifier found with previous command
 
 `sudo ip address` - check ip address
-
-
 
 Change Network adapter to `Bridged Adapter`
 
